@@ -1,8 +1,10 @@
 import Image from 'next/image'
+import styles from '../../styles/test/card.module.scss'
 export default function Card(){
     return(
-        <div className="card">
-             <Image height='50' width='50' src='/images/Gull_portrait_ca_usa.jpg'/>
+        <div className={styles.card}>
+            <Image height='300' width='300' src='/images/gota-de-sangue.png'/>
+            <p>lorem ipsun dollor </p>
         </div>
     )
 }

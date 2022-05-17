@@ -10,10 +10,8 @@ export default function Home() {
         <title>Principal</title>
         <meta name='keywords' content='Roupas, Calçados, Boné'></meta>
       </Head>
-
-      <div className='back'>
        <Body/>
-      </div>
+  
     </>
    
 
