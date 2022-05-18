@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Body from '../../components/test/body'
 
-export default function Home() {
+export default function Schemas() {
   return (
 
     <>

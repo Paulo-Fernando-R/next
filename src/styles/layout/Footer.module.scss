@@ -1,9 +1,13 @@
 .text{
     color: white;
     text-align: center;
+    margin-right: 50px;
 }
 
 .footer{
     height: 100px;
     background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: end;
 }

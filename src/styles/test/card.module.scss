@@ -1,13 +1,58 @@
 .card{
     width: 90%;
     height: 600px;
-    background-color: rgb(15, 15, 15);
+    background-color: rgba(12, 12, 12, 0.9);
 
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 30px;
+    margin-bottom: 50px;
+    margin-top: 0px;
 
     p{
-        color: wheat;
+        margin-top: 20px;
+        color: rgb(219, 219, 219);
+        text-decoration: none;
+        font-size: 4ex;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 300;
+        text-align: center;
+    }
+
+    div{
+        margin-top: 30px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h2{
+        color: rgb(0, 109, 182);
+        margin-bottom: 20px;
+    }
+
+    a{
+        color: rgb(219, 219, 219);
+
+        text-decoration: none;
+        font-size: 2.5ex;
+        font-weight: 300;
+        background-color: rgba(77, 77, 77, 0.7);
+    
+        
+        padding: 5px 50px;
+        border-radius: 30px;
+        border: white 1px;
+        border-style: solid;
+        transition: 500ms;
+    }
+
+    a:hover{
+        background-color: transparent;
     }
 }

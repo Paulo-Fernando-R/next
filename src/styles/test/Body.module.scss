@@ -4,6 +4,27 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     background-color: black;
 
+    background-image: url('../../../public/images/tumblr_920e83576ecaee5473d0eca24040342b_42a11e94_1280.gif');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.new{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-right: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    a{
+        font-size: 2.5ex;
+        transition: 500ms;
+    }
+    a:hover{
+        color: #666666
+
+    }
 }

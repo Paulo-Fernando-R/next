@@ -10,12 +10,13 @@ export default function Body(){
     
     return(
         <nav className={styles.body}>
-            <h2>dfdfdfdffdfd</h2>
+            <div className={styles.new}>
+                <a href="/create-schema">Criar novo esquema</a>
+            </div>
             {arr.map(() => {
                 return(
                     <Card/>
                 );
-              
             })}
         </nav>
     )
