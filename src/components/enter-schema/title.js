@@ -1,3 +1,5 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../../styles/enter-schema/EnterSchema.module.scss'
 export default function Title(){
     return(
@@ -13,7 +15,8 @@ export default function Title(){
                 dapibus tempor porta a justo. Praesent mattis neque vitae nulla 
                 condimentum, in laoreet nunc aliquam. Vestibulum sed pretium lacus.
             </p>
-
+            <Image width='200' height='200'  src={'/images/giphy.gif'}></Image>
+            <Link href="/test"><a className={styles.button}>Entrar no esquema</a></Link>
         </div>
     )
 }
