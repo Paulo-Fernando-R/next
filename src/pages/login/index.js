@@ -11,8 +11,8 @@ export default function Login() {
             <div>
                 <form>
                     <h1>Faça login</h1>
-                    <input placeholder='Nome de usuário'></input>
-                    <input type={'password'} placeholder='Senha'></input>
+                    <input required placeholder='Nome de usuário'></input>
+                    <input required type={'password'} placeholder='Senha'></input>
                     <button type='submit'>Enviar</button>
                     <a href='/signup'>Clique aqui se ainda não tem cadastro</a>
                 </form>

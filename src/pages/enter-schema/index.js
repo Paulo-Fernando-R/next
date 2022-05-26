@@ -3,52 +3,49 @@ import styles from '../../styles/enter-schema/EnterSchema.module.scss'
 import Title from '../../components/enter-schema/title'
 import List from '../../components/enter-schema/list'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 export default function EnterSchema(){
 
-   /* const router = useRouter();
-    const {
-        query: { id, name, description },
-    } = router;
-    const props = {
-        id,
-        name, 
-        description,
-    };*/
-
-    const arr = [
-        {id:1},
-        {id:2},
-        {id:3},
-        {id:4},
-        {id:5},
-        {id:6}
-    ]
-
     const router = useRouter()
     const {
-        query: {name, description},
+        query: {name, description, id},
     } = router
+
+    const [users, setUsers] = useState([])
+    const [ids, setIds] = useState(id)
+
+    useEffect(() => {
+        if(ids == null || ids == undefined)
+        {
+            setIds(0)
+            return;
+        }
+        const data = fetch(`http://localhost/web2-api/Routes/User/GetUsersbySchema.php?id=${ids}`)
+        .then((res) => res.json())
+        .then((data) => {
+            setUsers(data)
+            setIds(id)
+        })
+        
+    }, [ids]);
+
     return(
         <div className={styles.body}>
-            <Title/>
-            <h1>{name}aqui{description}</h1>
+           <Title name={name} description={description}/>
 
-
-            
-            <div className={styles.list}>
-                <h3>Pessoas cadastradas no esquema</h3>
-                {arr.map(() => {
-                    return(
-                        <List/>
-                    )
-                })}
-            </div>
+        <div className={styles.list}>
+            {users.length? (users.map((user) => {
+            return(
+                <List key={user.id} name={user.name}/>
+            )
+    }))
+    :<h2>Ninguém participa desse esquema ainda,  seja o primeiro!</h2>
+    }
+</div>
             
         </div>
     )
 }
 
-/*EnterSchema.getInitialProps = ({query: {name}}) =>{
-    return {name}
-}*/

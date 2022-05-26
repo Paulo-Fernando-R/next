@@ -18,6 +18,7 @@ export default function Body(props){
                 return(
                     <Card 
                         key={schema.id} 
+                        id = {schema.id}
                         name={schema.name}
                         description={schema.description}
                         minValue={schema.minvalue}

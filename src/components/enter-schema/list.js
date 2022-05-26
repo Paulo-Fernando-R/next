@@ -1,8 +1,8 @@
 import styles from '../../styles/enter-schema/EnterSchema.module.scss'
-export default function List(){
+export default function List(props){
     return(
         <div className={styles.listItem}>
-            <h2>Nome do usuario</h2>
+            <h2>{props.name}</h2>
         </div>
     )
 }

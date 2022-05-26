@@ -5,34 +5,6 @@ import Router from 'next/router'
 
 export default function Card(props){
 
-   /* const id = props.key
-    const name = props.name
-    const description = props.description
-
-    function sendProps(){
-        Router.push({
-            pathname: "/enter-schema",
-            query: {
-                id,
-                name,
-                description,
-                
-            },
-            
-        })
-    }*/
-
-
-/*<Link href={{
-                    pathname: '/enter-schema',
-                    query: {name: props.name}
-
-                }}><a>Entrar</a></Link>
-                
-                <a onClick={() => sendProps()}>Entrar</a>
-                */
-
-
     return(
         <div className={styles.card}>
             <Image height='300' width='300' src='/images/gota-de-sangue.png'/>
@@ -41,11 +13,12 @@ export default function Card(props){
             <div>
                 <h2>Valor mínimo: ${props.minValue}</h2>
                 
-                <Link as={'/enter-schema'} href={{
+                <Link  href={{
                     pathname: '/enter-schema',
                     query: {
                         name: props.name,
-                        description: props.description
+                        description: props.description,
+                        id: props.id
                     }
 
                 }}><a>Entrar</a></Link>
