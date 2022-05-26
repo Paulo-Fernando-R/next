@@ -1,7 +1,11 @@
 import Image from 'next/image'
 import styles from '../../styles/signup/SignUp.module.scss'
-
+import { useState } from 'react'
 export default function SignUp() {
+
+    const [name, setName] = useState('')
+    const [username, setUserName] = useState('')
+    const [password, setPassword] = useState('')
 
     const handleSubmit = async (event) => {
         // Stop the form from submitting and refreshing the page.
@@ -16,8 +20,7 @@ export default function SignUp() {
     
         // Send the data to the server in JSON format.
         const JSONdata = JSON.stringify(data)
-        alert(JSONdata)
-    
+        
         // API endpoint where we send form data.
         const endpoint = 'http://localhost/web2-api/Routes/User/AddUser.php'
     
@@ -43,7 +46,23 @@ export default function SignUp() {
         // Get the response data from server as JSON.
         // If server returns the name submitted, that means the form works.
         const result = await response.json()
-        alert(`Is this your full name: ${result.status}`)
+        if(result.status == 'ok')
+        {
+            alert(`Usuário: ${event.target.name.value} cadastrado com sucesso!`)
+            setName('')
+            setUserName('')
+            setPassword('')
+        }
+        else if(result.status == 'errorInput')
+        {
+            alert(`Algo de errado não está certo com o que foi digitado. Tente novamente!`)
+        }
+        else if(result.status == 'errorAdd')
+        {
+            alert(`Erro interno ao adicionar usuário. Tente novamente!`)
+        }
+
+        
       }
 
     return(
@@ -55,9 +74,31 @@ export default function SignUp() {
             <div>
                 <form  onSubmit={handleSubmit}>
                     <h1>Inscreva-se</h1>
-                    <input name='name' id='name' required placeholder='Nome'></input>
-                    <input name='username' id='username' required placeholder='Nome de usuário'></input>
-                    <input name='password' id='password' required type={'password'} placeholder='Senha'></input>
+                    <input name='name' 
+                    id='name' 
+                    required 
+                    placeholder='Nome'
+                    value={name}
+                    onChange={(e)=>{setName(e.target.value)}}
+                    ></input>
+
+                    <input name='username' 
+                    id='username' 
+                    required 
+                    placeholder='Nome de usuário'
+                    value={username}
+                    onChange={(e)=>{setUserName(e.target.value)}}
+                    ></input>
+
+                    <input name='password' 
+                    id='password' 
+                    required 
+                    type={'password'} 
+                    placeholder='Senha'
+                    value={password}
+                    onChange={(e)=>{setPassword(e.target.value)}}
+                    ></input>
+
                     <button type='submit'>Enviar</button>
                 </form>
             </div>
