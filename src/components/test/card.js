@@ -13,7 +13,7 @@ export default function Card(props){
             <div>
                 <h2>Valor mínimo: ${props.minValue}</h2>
                 
-                <Link  href={{
+                <Link as={'/enter-schema'}  href={{
                     pathname: '/enter-schema',
                     query: {
                         name: props.name,

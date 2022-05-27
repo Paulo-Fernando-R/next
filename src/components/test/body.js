@@ -1,13 +1,8 @@
 import Card from "./card"
 import styles from '../../styles/test/Body.module.scss'
+import { useContext, useState } from "react";
 export default function Body(props){
 
-    /*const arr = [
-        {id:1},
-        {id:2},
-        {id:3}
-    ]*/
-    
     return(
         <nav className={styles.body}>
             <div className={styles.new}>
