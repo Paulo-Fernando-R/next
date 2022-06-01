@@ -6,7 +6,6 @@ import {parseCookie} from "../../helpers/"
 export default function MainContainer({children}, {data}){
     return(
         <>
-       <h1>{data}</h1>
             <NavBar/>
             <div className={styles.content}>{children}</div>
             <Footer/>

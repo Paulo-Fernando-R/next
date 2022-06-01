@@ -60,11 +60,12 @@ export default function Login() {
             return;
         }
 
-        setCookie("user", result),{
+        setCookie("user", result, {
             path:"/",
             maxAge:3600,
             sameSite: true,
         }
+        )
         router.push({
             pathname:'/'
         })

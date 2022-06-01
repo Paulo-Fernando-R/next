@@ -3,7 +3,7 @@ import styles from '../../styles/layout/Navbar.module.scss'
 import {parseCookie} from "../../helpers/index"
 import { useEffect } from 'react'
 
-export default function NavBar(){
+export default function NavBar({data}){
 
     return(
         <div className={styles.header}>
@@ -17,3 +17,18 @@ export default function NavBar(){
         </div>
     )
 }
+
+NavBar.getInitialProps = async ({req, res}) => {
+    const data = parseCookie(req)
+  
+    if (res) {
+      if (Object.keys(data).length === 0 && data.constructor === Object) {
+        res.writeHead(301, { Location: "/" })
+        res.end()
+      }
+    }
+  
+    return {
+      data: data && data,
+    }
+  }
