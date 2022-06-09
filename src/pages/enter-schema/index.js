@@ -6,8 +6,15 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import {parseCookie} from "../../helpers/index"
+import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next';
 
-export default function EnterSchema({data}){
+/*EnterSchema.getInitialProps = ({ query: { name, description, id } }) => {
+    if(name != null || description != null || id != null)
+        return { name, description, id }
+  }*/
+  
+
+export default function EnterSchema(){
 
     const router = useRouter()
     const {
@@ -15,42 +22,62 @@ export default function EnterSchema({data}){
     } = router
 
     const [users, setUsers] = useState([])
-    const [ids, setIds] = useState(id)
+    const [ids, setIds] = useState()
+    const [names, setnames] = useState()
+    const [descriptions, setDescriptions] = useState()
+    const user = getCookie('user');
 
-    useEffect(() => {
-        if(ids == null || ids == undefined)
+
+    function verifyInfos(){
+        if(name != null || description != null || id != null)
         {
-            setIds(0)
+            setCookies('idSchema', id);
+            setCookies('nameSchema', name);
+            setCookies('descriptionSchema', description);
+            setIds(id);
+            setnames(name);
+            setDescriptions(description);
             return;
         }
+         
+        setIds(getCookie('idSchema'));
+        setnames(getCookie('nameSchema'));
+        setDescriptions(getCookie('descriptionSchema'));
+    }
+
+    useEffect(() => {
+        verifyInfos()
         const data = fetch(`http://localhost/web2-api/Routes/User/GetUsersbySchema.php?id=${ids}`)
         .then((res) => res.json())
         .then((data) => {
             setUsers(data)
-            setIds(id)
+            console.log(ids)
         })
         
     }, [ids]);
 
     return(
         <div className={styles.body}>
-           <Title name={name} description={description}/>
-            <h1>{data.user}</h1>
-        <div className={styles.list}>
-            {users.length? (users.map((user) => {
-            return(
-                <List key={user.id} name={user.name}/>
-            )
-    }))
-    :<h2>Ninguém participa desse esquema ainda,  seja o primeiro!</h2>
-    }
-</div>
+
+           <Title name={names} description={descriptions}/>
+            <h1>{ids}</h1>
+            <div className={styles.list}>
+
+                {
+                    users.length? (users.map((user) => {
+                    return(
+                        <List key={user.id} name={user.name}/>
+                    )}))
+                    
+                    :<h2>Ninguém participa desse esquema ainda,  seja o primeiro!</h2>
+                }
+            </div>
             
         </div>
     )
 }
 
-EnterSchema.getInitialProps = async ({req, res}) => {
+/*EnterSchema.getInitialProps = async ({req, res}) => {
     const data = parseCookie(req)
   
     if (res) {
@@ -63,4 +90,9 @@ EnterSchema.getInitialProps = async ({req, res}) => {
     return {
       data: data && data,
     }
-  }
+  }*/
+
+  /*export const getServerSideProps = ({ req, res }) => {
+      const data = getCookie('test', { req, res });
+      return {props:{data}}
+  }*/

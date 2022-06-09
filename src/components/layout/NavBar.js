@@ -2,6 +2,7 @@ import Image from 'next/image'
 import styles from '../../styles/layout/Navbar.module.scss'
 import {parseCookie} from "../../helpers/index"
 import { useEffect } from 'react'
+import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next';
 
 export default function NavBar({data}){
 
@@ -18,7 +19,7 @@ export default function NavBar({data}){
     )
 }
 
-NavBar.getInitialProps = async ({req, res}) => {
+/*NavBar.getInitialProps = async ({req, res}) => {
     const data = parseCookie(req)
   
     if (res) {
@@ -31,4 +32,4 @@ NavBar.getInitialProps = async ({req, res}) => {
     return {
       data: data && data,
     }
-  }
+  }*/

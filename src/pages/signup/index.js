@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import styles from '../../styles/signup/SignUp.module.scss'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 export default function SignUp() {
-
+    const router = useRouter()
     const [name, setName] = useState('')
     const [username, setUserName] = useState('')
     const [password, setPassword] = useState('')
@@ -52,6 +53,10 @@ export default function SignUp() {
             setName('')
             setUserName('')
             setPassword('')
+
+            router.push({
+                pathname:'/login'
+            })
         }
         else if(result.status == 'errorInput')
         {
@@ -60,6 +65,10 @@ export default function SignUp() {
         else if(result.status == 'errorAdd')
         {
             alert(`Erro interno ao adicionar usuário. Tente novamente!`)
+        }
+        else if(result.status == 'preexistent')
+        {
+            alert('Este nome de usuária já está sendo usado. Tente outro!')
         }
 
         

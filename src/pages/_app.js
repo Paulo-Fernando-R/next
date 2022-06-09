@@ -1,21 +1,28 @@
 import '../styles/globals.scss'
 import MainContainer from '../components/layout/MainContainer'
 import { useState } from 'react'
+import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next';
+
 
 import { CookiesProvider } from 'react-cookie'
 
 function MyApp({ Component, pageProps }) {
-
-  const [user, setUser] = useState(null)
-  
   
   return(
-    <CookiesProvider>
       <MainContainer>
         <Component {...pageProps} />
       </MainContainer> 
-      </CookiesProvider>
   )
 }
+
+/*<CookiesProvider>
+      <MainContainer>
+        <Component {...pageProps} />
+      </MainContainer> 
+      </CookiesProvider> */
+
+
+
+
 
 export default MyApp

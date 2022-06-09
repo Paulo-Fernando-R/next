@@ -4,6 +4,7 @@ import { useCookies } from 'react-cookie'
 import { useEffect, useState } from 'react'
 import Link from 'next'
 import { useRouter } from 'next/router'
+import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next';
 
 export default function Login() {
 
@@ -11,7 +12,15 @@ export default function Login() {
     const [password, setPassword] = useState('')
     const router =  useRouter()
 
-    const [cookie, setCookie] = useCookies(['user'])
+   // const [cookie, setCookie] = useCookies(['user'])
+
+   function formatJson(json)
+   {
+       json.map((item) => {
+        setCookies('idUser', item.id);
+        setCookies('nameUser', item.name)
+       })
+   }
 
     const handleSubmit = async (event) => {
         // Stop the form from submitting and refreshing the page.
@@ -59,18 +68,18 @@ export default function Login() {
             alert(`Usuário não encontrado`)
             return;
         }
-
-        setCookie("user", result, {
-            path:"/",
+        formatJson(result)
+        /*setCookie("user", result, {
+            path:"../../",
             maxAge:3600,
             sameSite: true,
         }
-        )
+        )*/
         router.push({
             pathname:'/'
         })
       }
-      
+
     return(
         <nav className={styles.box}>
             <div>
