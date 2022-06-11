@@ -1,28 +1,23 @@
 import '../styles/globals.scss'
 import MainContainer from '../components/layout/MainContainer'
-import { useState } from 'react'
-import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next';
-
-
-import { CookiesProvider } from 'react-cookie'
+import { useEffect, useState } from 'react';
+import { checkCookies, getCookies, getCookie, setCookies, removeCookies } from 'cookies-next';
 
 function MyApp({ Component, pageProps }) {
-  
+
+  const [ ret, setRet ] = useState('');
+//serve para buscar dados do child
+  const childtoparent = (childdata) => {
+      setRet(childdata)
+      console.log(ret + 'sssdsdd')
+    }
+
   return(
-      <MainContainer>
-        <Component {...pageProps} />
-      </MainContainer> 
+  
+    <MainContainer>
+      <Component childtoparent={childtoparent} {...pageProps} />
+    </MainContainer> 
   )
 }
-
-/*<CookiesProvider>
-      <MainContainer>
-        <Component {...pageProps} />
-      </MainContainer> 
-      </CookiesProvider> */
-
-
-
-
 
 export default MyApp

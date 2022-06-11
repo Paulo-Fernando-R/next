@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/dist/client/link'
 import styles from '../../styles/home/Logo.module.scss'
 
-import { CookiesProvider } from 'react-cookie'
 export default function Logo(){
 
     return(

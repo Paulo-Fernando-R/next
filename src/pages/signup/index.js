@@ -3,6 +3,7 @@ import styles from '../../styles/signup/SignUp.module.scss'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 export default function SignUp() {
+    
     const router = useRouter()
     const [name, setName] = useState('')
     const [username, setUserName] = useState('')

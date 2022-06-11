@@ -5,14 +5,7 @@ import List from '../../components/enter-schema/list'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react';
 import { useState } from 'react';
-import {parseCookie} from "../../helpers/index"
 import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next';
-
-/*EnterSchema.getInitialProps = ({ query: { name, description, id } }) => {
-    if(name != null || description != null || id != null)
-        return { name, description, id }
-  }*/
-  
 
 export default function EnterSchema(){
 
@@ -25,7 +18,7 @@ export default function EnterSchema(){
     const [ids, setIds] = useState()
     const [names, setnames] = useState()
     const [descriptions, setDescriptions] = useState()
-    const user = getCookie('user');
+    const user = getCookie('idUser');
 
 
     function verifyInfos(){
@@ -51,7 +44,6 @@ export default function EnterSchema(){
         .then((res) => res.json())
         .then((data) => {
             setUsers(data)
-            console.log(ids)
         })
         
     }, [ids]);
@@ -59,8 +51,13 @@ export default function EnterSchema(){
     return(
         <div className={styles.body}>
 
-           <Title name={names} description={descriptions}/>
-            <h1>{ids}</h1>
+           <Title 
+                name={names} 
+                description={descriptions}
+                idSchema={ids}
+                idUser={user}
+
+            />
             <div className={styles.list}>
 
                 {
@@ -76,23 +73,3 @@ export default function EnterSchema(){
         </div>
     )
 }
-
-/*EnterSchema.getInitialProps = async ({req, res}) => {
-    const data = parseCookie(req)
-  
-    if (res) {
-      if (Object.keys(data).length === 0 && data.constructor === Object) {
-        res.writeHead(301, { Location: "/" })
-        res.end()
-      }
-    }
-  
-    return {
-      data: data && data,
-    }
-  }*/
-
-  /*export const getServerSideProps = ({ req, res }) => {
-      const data = getCookie('test', { req, res });
-      return {props:{data}}
-  }*/
