@@ -1,3 +1,6 @@
+$desc-width: 30%-2;
+
+
 .body{
     display:  flex;
     flex-direction:  column;
@@ -53,5 +56,28 @@
         height: 40px;
         padding-left: 20px;
         color: #666666;
+        font-size: medium;
+    }
+
+    input[type='number'] {
+        -moz-appearance:textfield;
+    }
+    
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    .desc{
+        height: 100px;
+        border-radius: 30px;
+        margin-bottom: 20px;
+        padding-top: 20px;
+        padding: 2%;
+        border-style: none;
+        width: $desc-width;
+        padding-left: 20px;
+        color: #666666;
+        font-size: medium;
     }
 }
