@@ -18,10 +18,12 @@ export default function EnterSchema(){
     const [ids, setIds] = useState()
     const [names, setnames] = useState()
     const [descriptions, setDescriptions] = useState()
+    const [participate, setParticipate] = useState(false)
     const user = getCookie('idUser');
 
 
     function verifyInfos(){
+
         if(name != null || description != null || id != null)
         {
             setCookies('idSchema', id);
@@ -38,15 +40,30 @@ export default function EnterSchema(){
         setDescriptions(getCookie('descriptionSchema'));
     }
 
+    function verifyParticipation(){
+        if(users.status == 'error')
+            return;
+
+        users.forEach(element => {
+            if(element.id == user){
+                setParticipate(true)
+            }
+        });
+    }
+
     useEffect(() => {
+
         verifyInfos()
+
         const data = fetch(`http://localhost/web2-api/Routes/User/GetUsersbySchema.php?id=${ids}`)
         .then((res) => res.json())
         .then((data) => {
-            setUsers(data)
+            setUsers(data);
         })
-        
-    }, [ids]);
+
+        if(!participate || users.length == 0)
+            verifyParticipation()
+    }, [ids, users]);
 
     return(
         <div className={styles.body}>
@@ -56,10 +73,11 @@ export default function EnterSchema(){
                 description={descriptions}
                 idSchema={ids}
                 idUser={user}
+                participate={participate}
 
             />
             <div className={styles.list}>
-
+                <h1>Participantes deste Schema</h1>
                 {
                     users.length? (users.map((user) => {
                     return(
