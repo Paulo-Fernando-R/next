@@ -71,7 +71,7 @@ export default function Login({childtoparent}) {
 
         formatJson(result)
         
-        await setTimeout(()=>{router.reload()},100)
+        await setTimeout(()=>{router.reload()},200)
         router.push({
             pathname:'/',
             
