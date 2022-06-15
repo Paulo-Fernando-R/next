@@ -87,7 +87,8 @@ export default function Login({childtoparent}) {
             <div>
                 <form onSubmit={handleSubmit}>
                     <h1>Faça login</h1>
-                    <input name='username' 
+                    <input 
+                    name='username' 
                     id='username' 
                     required 
                     placeholder='Nome de usuário'
