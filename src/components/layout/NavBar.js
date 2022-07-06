@@ -2,6 +2,7 @@ import Image from 'next/image'
 import styles from '../../styles/layout/Navbar.module.scss'
 import { checkCookies, getCookies, getCookie, setCookies, removeCookies } from 'cookies-next';
 import { useRouter } from 'next/router'
+import Link from 'next/link';
 
 export default function NavBar(props){
 
@@ -16,18 +17,27 @@ export default function NavBar(props){
 
     return(
         <div className={styles.header}>
-        <a href="/">
+        <Link href="/">
+            <a>
             <Image height='20' width='20' src='/images/bleach.png'/>
-        </a>
+            </a>
+        </Link>
+        
         {
             props.user == null?
-            <a href="/login">
+            <Link href="/login">
+                <a>
                 <Image height='20' width='20' src='/images/dry-clean.png'/>
-            </a>
+                </a>
+            </Link>
+            
             :
-            <a onClick={logoff}>
+          
+                <a onClick={logoff}>
                 <Image height='20' width='20' src='/images/opcao-de-sair.png'/>
-            </a>
+                </a>
+         
+            
         }
         
         </div>

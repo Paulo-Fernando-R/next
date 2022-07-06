@@ -3,6 +3,7 @@ import styles from '../../styles/signup/SignUp.module.scss'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { getCookies, getCookie, setCookies, removeCookies } from 'cookies-next';
+import Link from 'next/link';
 
 export default function Login({childtoparent}) {
     /*serve para mandar dados para o parent
@@ -105,7 +106,8 @@ export default function Login({childtoparent}) {
                     onChange={(e)=>{setPassword(e.target.value)}}
                     ></input>
                     <button type='submit'>Enviar</button>
-                    <a href='/signup'>Clique aqui se ainda não tem cadastro</a>
+                    <Link href='/signup'><a>Clique aqui se ainda não tem cadastro</a></Link>
+                    
                 </form>
             </div>
         </nav>

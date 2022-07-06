@@ -6,8 +6,9 @@ export default function Footer(){
             <Link href={'/extra'}><a>Páginas extras</a></Link>
             <div>
                 <p className={styles.text}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean 
-                    ut orci id est iaculis tristique. Nullam vitae sem mauris. Vestibulum euismod purus sit amet 
+                    O Schema é um site para você que tem meios duvidosos para entrar em coisas interessantes e legais,
+                    saiba que é muito bem vindo. Lembre-se, estamos procurando o Messi Agiota, ele deixou meu gato calvo. Obrigado
+                    - Viva como se fosse morrer, porque você vai.
                 </p>
             </div>
            
